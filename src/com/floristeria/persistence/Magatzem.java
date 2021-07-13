@@ -2,6 +2,6 @@ package com.floristeria.persistence;
 
 public class Magatzem {
 	
-	//això és una modificació
+	//això és una modificació 2
 
 }
