@@ -35,12 +35,29 @@ public class Floristeria {
 	public void afegirDecoracio(Decoracio decoracio) {
 		this.decoracions.add(decoracio);
 	}
+	
+	public void printArbres(){
+		for (Arbre ar : this.arbres) {
+			System.out.println(ar.getNom());
+		}
+	}
+	
+	public void printFlors(){
+		for (Flor fl : this.flors) {
+			System.out.println(fl.getNom());
+		}
+	}
+	
+	public void printDecoracions(){
+		for (Decoracio dc : this.decoracions) {
+			System.out.println(dc.getNom());
+		}
+	}
 
 
 	@Override
 	public String toString() {
-		return "Floristeria [nom=" + nom + ", arbres=" + arbres + ", flors=" + flors + ", decoracions=" + decoracions
-				+ "]";
+		return "nom=" + nom + ", arbres=" + arbres + ", flors=" + flors + ", decoracions=" + decoracions;
 	}
 	
 	

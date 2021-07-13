@@ -18,9 +18,13 @@ public class Main {
 		crearFloristeria(floristeries, "Floristeria 1");
 		
 		//afegirArbre 
-		Arbre arbre = new Arbre("llimoner", 20.5, 3.5);
+		Arbre llimoner = new Arbre("llimoner", 20.5, 3.5);
+		Arbre avet = new Arbre("avet", 20.5, 3.5);
+		Arbre pi = new Arbre("pi", 20.5, 3.5);
 		
-		floristeries.get(0).afegirArbre(arbre);
+		floristeries.get(0).afegirArbre(llimoner);
+		floristeries.get(0).afegirArbre(avet);
+		floristeries.get(0).afegirArbre(pi);
 		
 		//afegirFlor 
 		Flor flor = new Flor("rosa", 5, "vermell");
@@ -32,18 +36,25 @@ public class Main {
 		
 		floristeries.get(0).afegirDecoracio(decoracio);
 		
-		System.out.println(floristeries.get(0).toString());
-		
 		//stock: imprimeix per pantalla tots els arbres, flors i decoració que té la floristeria.
+		
+		printejarFloristeria(floristeries.get(0));
 		
 	}
 	
 	private static void crearFloristeria (List<Floristeria> floristeries, String nom) {
 		Floristeria newFloristeria = new Floristeria(nom);
 		floristeries.add(newFloristeria);
-		System.out.println("Floristeria " + newFloristeria.getNom() + " creada correctament!");
 	}
 	
-
+	private static void printejarFloristeria(Floristeria floristeria) {
+		System.out.println("Arbres: ");
+		floristeria.printArbres();
+		System.out.println("Flors: ");
+		floristeria.printFlors();
+		System.out.println("Decoracions: ");
+		floristeria.printDecoracions();
+		
+	}
 
 }
