@@ -2,17 +2,11 @@ package com.floristeria.domain;
 
 public class Floristeria {
 	private String nom;
-	
-	
+		
 	
 	//crea una floristeria i li assigna un nom.
-	public Floristeria crearFloristeria(String nom) {
-		
-		Floristeria newFloristeria = new Floristeria();
-		
-		newFloristeria.setNom(nom);
-		
-		return newFloristeria;
+	public Floristeria(String nom) {		
+		this.nom = nom;
 	}
 	
 	
