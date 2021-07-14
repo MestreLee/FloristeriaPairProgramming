@@ -179,7 +179,7 @@ public class Main {
 						System.out.println("|fusta o plastic.                          |");
 						System.out.println("+------------------------------------------+");
 						materialDecoracio = sca.next();
-						materialDecoracio.toLowerCase();
+						materialDecoracio = materialDecoracio.toLowerCase(); //TODO 
 					}
 				}
 				Decoracio newDecoracio = new Decoracio(nomDecoracio, preuDecoracio, materialDecoracioBool);
@@ -225,6 +225,7 @@ public class Main {
 //		//stock: imprimeix per pantalla tots els arbres, flors i decoració que té la floristeria.
 //		
 //		printejarFloristeria(floristeries.get(0));
+		
 		
 	}
 	
