@@ -2,16 +2,12 @@ package com.floristeria.view;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+import java.util.Scanner;
 
 import com.floristeria.domain.Arbre;
 import com.floristeria.domain.Decoracio;
 import com.floristeria.domain.Flor;
 import com.floristeria.domain.Floristeria;
-import com.floristeria.persistence.Magatzem;
-
-import java.util.Arrays;
-import java.util.Scanner;
 
 public class Main {
 	
@@ -45,27 +41,30 @@ public class Main {
 				System.out.println("+------------------------------------------+");
 				System.out.println("|   introduiu el nom de la floristeria:    |");
 				System.out.println("+------------------------------------------+");
-				String nomFloristeria = sca.next();
-				crearFloristeria(floristeries, nomFloristeria);
+				String nomFloristeriaA = sca.next();
+				crearFloristeria(floristeries, nomFloristeriaA);
 				break;
 				
 			case 'b':
-				boolean floristeriaExistent = false;
-				String nomFLoristeria;
-				while (floristeriaExistent == false) {
+				boolean floristeriaBExistent = false;
+				int floristeriaBIndex = -1;
+				while (floristeriaBExistent == false) {
 					System.out.println("+------------------------------------------+");
 					System.out.println("|   Introduiu el nom de la floristeria     |");
 					System.out.println("+------------------------------------------+");
-					nomFLoristeria = sca.next();
-					floristeriaExistent = floristeries.stream()
-							.anyMatch(nomFloristeria::equals); //TODO comprovar que funciona quan estigui tot el codi muntat
+					String nomFLoristeriaB = sca.next();
+					for (int i=0; i<floristeries.size(); i++) {
+						if (nomFLoristeriaB.equals(floristeries.get(i).getNom())) {
+							floristeriaBIndex = i;
+							floristeriaBExistent = true;
+						}
+						else {
+							System.out.println("+------------------------------------------+");
+							System.out.println("|   floristeria no trobada                 |");
+						}
+					}
 				}
-//				Floristeria floristeriaActual = floristeries.stream()
-//						.filter(floristeria -> nomFLoristeria.equals(floristeria.getNom()))
-//						.findAny();
-				Floristeria floristeriaActual = floristeries.forEach(floristeria -> nomFLoristeria.equals(floristeria.getNom());
 				
-
 				System.out.println("+------------------------------------------+");
 				System.out.println("|   introduiu el nom de l'arbre:           |");
 				System.out.println("+------------------------------------------+");
@@ -81,23 +80,30 @@ public class Main {
 				System.out.println("+------------------------------------------+");
 				double alcadaArbre = sca.nextDouble();
 				
-				floristeriaActual.afegirArbre(nomArbre, preuArbre, alcadaArbre);
+				Arbre newArbre = new Arbre(nomArbre, preuArbre, alcadaArbre);
+				floristeries.get(floristeriaBIndex).afegirArbre(newArbre);
 				
 				break;
 				
 			case 'c':
-				boolean floristeriaExistent = false;
-				String nomFLoristeria;
-				while (floristeriaExistent == false) {
+				boolean floristeriaCExistent = false;
+				int floristeriaCIndex = -1;
+				while (floristeriaCExistent == false) {
 					System.out.println("+------------------------------------------+");
 					System.out.println("|   Introduiu el nom de la floristeria     |");
 					System.out.println("+------------------------------------------+");
-					nomFLoristeria = sca.next();
-					boolean floristeriaExistent = Arrays.stream(floristeries).anyMatch(nomFloristeria::equals); //TODO comprovar que funciona quan estigui tot el codi muntat
+					String nomFLoristeriaC = sca.next();
+					for (int i=0; i<floristeries.size(); i++) {
+						if (nomFLoristeriaC.equals(floristeries.get(i).getNom())) {
+							floristeriaCIndex = i;
+							floristeriaCExistent = true;
+						}
+						else {
+							System.out.println("+------------------------------------------+");
+							System.out.println("|   floristeria no trobada                 |");
+						}
+					}
 				}
-				Floristeria floristeriaActual = floristeries.stream()
-						.filter(floristeria -> nomFLoristeria.equals(floristeria.getNom()))
-						.findAny();
 				
 				System.out.println("+------------------------------------------+");
 				System.out.println("|   introduiu el nom de la flor:           |");
@@ -114,23 +120,30 @@ public class Main {
 				System.out.println("+------------------------------------------+");
 				String colorFlor = sca.next();
 				
-				floristeriaActual.afegirFlor(nomArbre, preuArbre, colorFlor);
+				Flor newFlor = new Flor(nomFlor, preuFlor, colorFlor);
+				floristeries.get(floristeriaCIndex).afegirFlor(newFlor);
 				
 				break;
 				
 			case 'd':
-				boolean floristeriaExistent = false;
-				String nomFLoristeria;
-				while (floristeriaExistent == false) {
+				boolean floristeriaDExistent = false;
+				int floristeriaDIndex = -1;
+				while (floristeriaDExistent == false) {
 					System.out.println("+------------------------------------------+");
 					System.out.println("|   Introduiu el nom de la floristeria     |");
 					System.out.println("+------------------------------------------+");
-					nomFLoristeria = sca.next();
-					boolean floristeriaExistent = Arrays.stream(floristeries).anyMatch(nomFloristeria::equals); //TODO comprovar que funciona quan estigui tot el codi muntat
+					String nomFLoristeriaD = sca.next();
+					for (int i=0; i<floristeries.size(); i++) {
+						if (nomFLoristeriaD.equals(floristeries.get(i).getNom())) {
+							floristeriaDIndex = i;
+							floristeriaDExistent = true;
+						}
+						else {
+							System.out.println("+------------------------------------------+");
+							System.out.println("|   floristeria no trobada                 |");
+						}
+					}
 				}
-				Floristeria floristeriaActual = floristeries.stream()
-						.filter(floristeria -> nomFLoristeria.equals(floristeria.getNom()))
-						.findAny();
 				
 				System.out.println("+------------------------------------------+");
 				System.out.println("|   introduiu el nom de la decoració:      |");
@@ -149,7 +162,7 @@ public class Main {
 				materialDecoracio.toLowerCase();
 				
 				int y=-1;
-				boolean materialDecoracioBool;
+				boolean materialDecoracioBool = false;
 				while (y<0) {
 					if (materialDecoracio.equals("fusta")) {
 						materialDecoracioBool = true;
@@ -169,8 +182,8 @@ public class Main {
 						materialDecoracio.toLowerCase();
 					}
 				}
-				
-				floristeriaActual.afegirDecoracio(nomArbre, preuArbre, materialDecoracioBool);
+				Decoracio newDecoracio = new Decoracio(nomDecoracio, preuDecoracio, materialDecoracioBool);
+				floristeries.get(floristeriaDIndex).afegirDecoracio(newDecoracio);
 				
 				break;
 				
@@ -186,32 +199,32 @@ public class Main {
 		
 		
 		
-		
-		//crearFloristeria 
-		crearFloristeria(floristeries, "Floristeria 1");
-		
-		//afegirArbre 
-		Arbre llimoner = new Arbre("llimoner", 20.5, 3.5);
-		Arbre avet = new Arbre("avet", 20.5, 3.5);
-		Arbre pi = new Arbre("pi", 20.5, 3.5);
-		
-		floristeries.get(0).afegirArbre(llimoner);
-		floristeries.get(0).afegirArbre(avet);
-		floristeries.get(0).afegirArbre(pi);
-		
-		//afegirFlor 
-		Flor flor = new Flor("rosa", 5, "vermell");
-		
-		floristeries.get(0).afegirFlor(flor);
-		
-		//afegirDecoracio 
-		Decoracio decoracio = new Decoracio("Decoracio de fusta", 6.5, true);
-		
-		floristeries.get(0).afegirDecoracio(decoracio);
-		
-		//stock: imprimeix per pantalla tots els arbres, flors i decoració que té la floristeria.
-		
-		printejarFloristeria(floristeries.get(0));
+		//DEBUG LINES
+//		//crearFloristeria 
+//		crearFloristeria(floristeries, "Floristeria 1");
+//		
+//		//afegirArbre 
+//		Arbre llimoner = new Arbre("llimoner", 20.5, 3.5);
+//		Arbre avet = new Arbre("avet", 20.5, 3.5);
+//		Arbre pi = new Arbre("pi", 20.5, 3.5);
+//		
+//		floristeries.get(0).afegirArbre(llimoner);
+//		floristeries.get(0).afegirArbre(avet);
+//		floristeries.get(0).afegirArbre(pi);
+//		
+//		//afegirFlor 
+//		Flor flor = new Flor("rosa", 5, "vermell");
+//		
+//		floristeries.get(0).afegirFlor(flor);
+//		
+//		//afegirDecoracio 
+//		Decoracio decoracio = new Decoracio("Decoracio de fusta", 6.5, true);
+//		
+//		floristeries.get(0).afegirDecoracio(decoracio);
+//		
+//		//stock: imprimeix per pantalla tots els arbres, flors i decoració que té la floristeria.
+//		
+//		printejarFloristeria(floristeries.get(0));
 		
 	}
 	
