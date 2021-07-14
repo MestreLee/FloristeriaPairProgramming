@@ -2,6 +2,7 @@ package com.floristeria.view;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import com.floristeria.domain.Arbre;
 import com.floristeria.domain.Decoracio;
@@ -45,7 +46,7 @@ public class Main {
 				System.out.println("|   introduiu el nom de la floristeria:    |");
 				System.out.println("+------------------------------------------+");
 				String nomFloristeria = sca.next();
-				crearFloristeria(nomFloristeria);
+				crearFloristeria(floristeries, nomFloristeria);
 				break;
 				
 			case 'b':
@@ -56,11 +57,14 @@ public class Main {
 					System.out.println("|   Introduiu el nom de la floristeria     |");
 					System.out.println("+------------------------------------------+");
 					nomFLoristeria = sca.next();
-					boolean floristeriaExistent = Arrays.stream(floristeries).anyMatch(nomFloristeria::equals); //TODO comprovar que funciona quan estigui tot el codi muntat
+					floristeriaExistent = floristeries.stream()
+							.anyMatch(nomFloristeria::equals); //TODO comprovar que funciona quan estigui tot el codi muntat
 				}
-				Floristeria floristeriaActual = floristeries.stream()
-						.filter(floristeria -> nomFLoristeria.equals(floristeria.getNom()))
-						.findAny();
+//				Floristeria floristeriaActual = floristeries.stream()
+//						.filter(floristeria -> nomFLoristeria.equals(floristeria.getNom()))
+//						.findAny();
+				Floristeria floristeriaActual = floristeries.forEach(floristeria -> nomFLoristeria.equals(floristeria.getNom());
+				
 
 				System.out.println("+------------------------------------------+");
 				System.out.println("|   introduiu el nom de l'arbre:           |");
