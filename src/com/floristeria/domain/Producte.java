@@ -6,10 +6,6 @@ public abstract class Producte {
 	private String nom;
 	private double preu;
 	
-	
-	
-	
-	
 	//getters & setters
 	public String getNom() {
 		return nom;
@@ -23,5 +19,11 @@ public abstract class Producte {
 	public void setPreu(double preu) {
 		this.preu = preu;
 	}
+	@Override
+	public String toString() {
+		return "Producte [nom=" + nom + ", preu=" + preu + "]";
+	}
 
+	
+	
 }

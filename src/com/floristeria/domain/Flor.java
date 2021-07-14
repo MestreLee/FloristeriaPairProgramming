@@ -2,23 +2,17 @@ package com.floristeria.domain;
 
 public class Flor extends Producte {
 	
-
-	
 	private String color;
 	
 
+	public Flor(String nom, double preu, String color) {
+		
+		this.setPreu(preu);
+		this.setNom(nom);
+		this.setColor(color);
 
-	public void afegirFlor(String nom, double preu, String color) {
-		Flor newFlor = new Flor();
-		
-		newFlor.setPreu(preu);
-		newFlor.setNom(nom);
-		newFlor.setColor(color);
-		
-		//TODO s'ha de guardar al magatzem
 	}
-	
-	
+		
 
 	//getters & setters
 	public String getColor() {
@@ -28,5 +22,16 @@ public class Flor extends Producte {
 	public void setColor(String color) {
 		this.color = color;
 	}
+
+
+	@Override
+	public String toString() {
+		return "Flor [color=" + color + ", Nom= " + getNom() + ", Preu= " + getPreu() + "]";
+	}
+
+
+
+	
+	
 
 }
