@@ -159,7 +159,7 @@ public class Main {
 				System.out.println("|   introduiu el material de la decoració: |");
 				System.out.println("+------------------------------------------+");
 				String materialDecoracio = sca.next();
-				materialDecoracio.toLowerCase();
+				materialDecoracio = materialDecoracio.toLowerCase();
 				
 				int y=-1;
 				boolean materialDecoracioBool = false;
@@ -179,7 +179,7 @@ public class Main {
 						System.out.println("|fusta o plastic.                          |");
 						System.out.println("+------------------------------------------+");
 						materialDecoracio = sca.next();
-						materialDecoracio = materialDecoracio.toLowerCase(); //TODO 
+						materialDecoracio = materialDecoracio.toLowerCase();
 					}
 				}
 				Decoracio newDecoracio = new Decoracio(nomDecoracio, preuDecoracio, materialDecoracioBool);
