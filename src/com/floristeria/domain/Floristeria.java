@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 public class Floristeria {
 	private String nom;
 	
-	ArrayList<Producte> productes = new ArrayList<Producte>();
+	static ArrayList<Producte> productes = new ArrayList<Producte>();
 	
 	//crea una floristeria i li assigna un nom.
 	public Floristeria(String nom) {		
@@ -106,21 +106,24 @@ public class Floristeria {
 	
 	public void printArbres(){
 		List<Producte>toPrint = productes.stream()
-				.filter( producte -> producte.getTipus().equals("arbre") && producte.getStock() >= 1 )
+				.filter( producte -> producte.getTipus().equals("arbre") )
+				.filter( producte -> producte.getStock() >= 1 )
 				.collect(Collectors.toList());
 		System.out.println(toPrint.toString());
 	}
 	
 	public void printFlors(){
 		List<Producte>toPrint = productes.stream()
-				.filter( producte -> producte.getTipus().equals("flor") && producte.getStock() >= 1 )
+				.filter( producte -> producte.getTipus().equals("flor") )
+				.filter( producte -> producte.getStock() >= 1 )
 				.collect(Collectors.toList());
 		System.out.println(toPrint.toString());
 	}
 	
 	public void printDecoracions(){
 		List<Producte>toPrint = productes.stream()
-				.filter( producte -> producte.getTipus().equals("decoracio") && producte.getStock() >= 1 )
+				.filter( producte -> producte.getTipus().equals("decoracio") )
+				.filter( producte -> producte.getStock() >= 1 )
 				.collect(Collectors.toList());
 		System.out.println(toPrint.toString());
 	}
