@@ -22,12 +22,8 @@ public class Flor extends Producte {
 
 	@Override
 	public String toString() {
-		return "Flor [color=" + color + ", Nom= " + getNom() + ", Preu= " + getPreu() + "]";
+		return "Flor:" + getNom() + ", color: " + color + ", ID: " + getId() + ", Preu= " + getPreu() + ", stock: " + getStock();
 	}
 
-
-
-	
-	
 
 }

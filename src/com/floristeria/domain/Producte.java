@@ -42,6 +42,10 @@ public abstract class Producte {
 		this.tipus = tipus;
 	}
 	
+	public int getId() {
+		return id;
+	}
+	
 	public int getStock() {
 		return stock;
 	}
@@ -52,6 +56,9 @@ public abstract class Producte {
 		stock++;
 	}
 	
+	public void decrStock() {
+		stock--;
+	}
 	
 	
 	@Override

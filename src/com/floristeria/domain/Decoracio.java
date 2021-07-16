@@ -25,6 +25,6 @@ public class Decoracio extends Producte {
 		String mater = this.material 
   				? "Fusta" 
   				: "Plastic";
-		return "Decoracio [material=" + mater + ", Nom= " + getNom() + ", Preu= " + getPreu() + "]";
+		return "Decoracio: " + getNom() + ", material:" + mater + ", preu: " + getPreu() + ", stock: " + getStock();
 	}
 }

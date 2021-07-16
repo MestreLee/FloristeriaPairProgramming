@@ -22,9 +22,7 @@ public class Arbre extends Producte {
 
 	@Override
 	public String toString() {
-		return "Arbre [alcada=" + alcada + ", Nom= " + getNom() + ", Preu= " + getPreu() + "]";
+		return "Arbre: " + getNom() + ", alçada " + alcada + ", ID: " + this.id + ", Preu= " + getPreu() +  ", Stock " + this.getStock();
 	}
-	
-	
 
 }
