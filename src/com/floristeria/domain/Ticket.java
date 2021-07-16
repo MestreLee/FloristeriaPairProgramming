@@ -90,7 +90,7 @@ public class Ticket {
 		
 		//calcula el preu total
 		double preuTotal = 0;
-		productesTicket.forEach( producte -> preuTotal =+ producte.getPreu() );  //TODO
+		productesTicket.forEach( producte -> preuTotal =+ producte.getPreu() );  //TODO 
 		
 		
 		
