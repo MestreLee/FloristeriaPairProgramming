@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 public class Floristeria {
 	private String nom;
+	private double valorTotalStock = 0;
 	
 	static ArrayList<Producte> productes = new ArrayList<Producte>();
 	
@@ -32,12 +33,13 @@ public class Floristeria {
 		//assigna tipus
 		arbre.setTipus("arbre");
 
-		//busca el producte a l'array de productes, si hi és n'incrementa el stock en 1
+		//busca el producte a l'array de productes, si hi és n'incrementa el stock en 1 i suma el valor al valor total de l'stock
 		boolean trobat = false;  
 		for (Producte pr:productes) {
 			if((pr instanceof Arbre)) {	
 				if(pr.equals(arbre)) {
 					pr.incStock();
+					valorTotalStock = valorTotalStock + pr.getPreu();
 					trobat = true;
 					break;
 				}
@@ -45,10 +47,10 @@ public class Floristeria {
 			}
 		}
 		
-		//comprova si no trobat, afegeix stock = 1 i l'arbre a l'array
+		//comprova si no trobat, afegeix stock = 1, suma el seu valor al valor total de l'stock i l'arbre a l'array
 		if (!trobat) {
 			arbre.setStock(1);
-			
+			valorTotalStock = valorTotalStock + arbre.getPreu();
 			//afegir a l'array
 			productes.add(arbre);
 		}
@@ -57,12 +59,13 @@ public class Floristeria {
 	public void afegirFlor(Flor flor) {
 		flor.setTipus("flor");
 		
-		//busca el producte a l'array de productes, si hi és n'incrementa el stock en 1
+		//busca el producte a l'array de productes, si hi és n'incrementa el stock en 1 i suma el valor al valor total de l'stock
 		boolean trobat = false;
 		for (Producte pr:productes) {
 			if((pr instanceof Flor)) {	
 				if(pr.equals(flor)) {
 					pr.incStock();
+					valorTotalStock = valorTotalStock + pr.getPreu();
 					trobat = true;
 					break;
 				}
@@ -70,10 +73,10 @@ public class Floristeria {
 			}
 		}
 		
-		//comprova si no trobat, afegeix stock = 1 i la flor a l'array
+		//comprova si no trobat, afegeix stock = 1, suma el seu valor al valor total de l'stock i la flor a l'array
 		if (!trobat) {
 			flor.setStock(1);
-			
+			valorTotalStock = valorTotalStock + flor.getPreu();
 			//afegir a l'array
 			productes.add(flor);
 		}
@@ -82,12 +85,13 @@ public class Floristeria {
 	public void afegirDecoracio(Decoracio decoracio) {
 		decoracio.setTipus("decoracio");
 		
-		//busca el producte a l'array de productes, si hi és n'incrementa el stock en 1
+		//busca el producte a l'array de productes, si hi és n'incrementa el stock en 1 i suma el valor al valor total de l'stock
 		boolean trobat = false;
 		for (Producte pr:productes) {
 			if((pr instanceof Decoracio)) {	
 				if(pr.equals(decoracio)) {
 					pr.incStock();
+					valorTotalStock = valorTotalStock + pr.getPreu();
 					trobat = true;
 					break;
 				}
@@ -95,10 +99,10 @@ public class Floristeria {
 			}
 		}
 		
-		//comprova si no trobat, afegeix stock = 1 i la flor a l'array
+		//comprova si no trobat, afegeix stock = 1, suma el seu valor al valor total de l'stock i la decoració a l'array
 		if (!trobat) {
 			decoracio.setStock(1);
-			
+			valorTotalStock = valorTotalStock + decoracio.getPreu();
 			//afegir a l'array
 			productes.add(decoracio);
 		}
@@ -148,6 +152,10 @@ public class Floristeria {
 		}
 	}
 
+	public void printValorTotal() {
+		
+		System.out.println("El valor total de l'stock de la floristeria és de: " + valorTotalStock + " €.");
+	}
 
 	
 	//TO string
