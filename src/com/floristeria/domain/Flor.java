@@ -4,13 +4,9 @@ public class Flor extends Producte {
 	
 	private String color;
 	
-
 	public Flor(String nom, double preu, String color) {
-		
-		this.setPreu(preu);
-		this.setNom(nom);
+		super(nom, preu);
 		this.setColor(color);
-
 	}
 		
 

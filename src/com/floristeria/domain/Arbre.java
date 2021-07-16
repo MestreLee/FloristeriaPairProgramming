@@ -5,11 +5,8 @@ public class Arbre extends Producte {
 	private double alcada;  //alçada
 
 	public Arbre(String nom, double preu, double alcada) {
-		this.setPreu(preu);
-		this.setNom(nom);
+		super(nom, preu);
 		this.setAlcada(alcada);
-		
-		//TODO s'ha de guardar al magatzem
 	}
 		
 

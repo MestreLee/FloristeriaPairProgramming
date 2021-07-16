@@ -5,12 +5,8 @@ public class Decoracio extends Producte {
 	private boolean material;  //true=fusta, false=plàstic
 
 	public Decoracio(String nom, double preu, boolean material) {
-		
-		this.setPreu(preu);
-		this.setNom(nom);
+		super(nom, preu);
 		this.setMaterial(material);
-		
-		//TODO s'ha de guardar al magatzem
 	}
 	
 
@@ -31,7 +27,4 @@ public class Decoracio extends Producte {
   				: "Plastic";
 		return "Decoracio [material=" + mater + ", Nom= " + getNom() + ", Preu= " + getPreu() + "]";
 	}
-	
-	
-
 }

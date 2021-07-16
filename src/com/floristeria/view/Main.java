@@ -1,7 +1,5 @@
 package com.floristeria.view;
 
-//import java.util.ArrayList;
-//import java.util.List;
 import java.util.Scanner;
 
 import com.floristeria.domain.Arbre;
@@ -11,8 +9,6 @@ import com.floristeria.domain.Floristeria;
 
 public class Main {
 	
-//	private static List<Floristeria> floristeries=new ArrayList<>();
-	
 	public static void main(String[] args) throws Exception {
 		
 		//crida el scanner
@@ -20,6 +16,7 @@ public class Main {
 		
 		//menú de navegació
 		int x=-1;
+		Floristeria floristeria = null;
 		while (x<0) {			
 			System.out.println("+------------------------------------------+");
 			System.out.println("| Seleccioneu una de les següents opcions: |");
@@ -41,30 +38,11 @@ public class Main {
 				System.out.println("+------------------------------------------+");
 				System.out.println("|   introduiu el nom de la floristeria:    |");
 				System.out.println("+------------------------------------------+");
-				String nomFloristeria = sca.next();
-//				crearFloristeria(floristeries, nomFloristeriaA);
-				crearFloristeria(nomFloristeria);
+				floristeria = new Floristeria(sca.next());
 				break;
 				
 			case 'b':
-//				boolean floristeriaBExistent = false;
-//				int floristeriaBIndex = -1;
-//				while (floristeriaBExistent == false) {
-//					System.out.println("+------------------------------------------+");
-//					System.out.println("|   Introduiu el nom de la floristeria     |");
-//					System.out.println("+------------------------------------------+");
-//					String nomFLoristeriaB = sca.next();
-//					for (int i=0; i<floristeries.size(); i++) {
-//						if (nomFLoristeriaB.equals(floristeries.get(i).getNom())) {
-//							floristeriaBIndex = i;
-//							floristeriaBExistent = true;
-//						}
-//						else {
-//							System.out.println("+------------------------------------------+");
-//							System.out.println("|   floristeria no trobada                 |");
-//						}
-//					}
-//				}
+
 				
 				System.out.println("+------------------------------------------+");
 				System.out.println("|   introduiu el nom de l'arbre:           |");
@@ -82,30 +60,11 @@ public class Main {
 				double alcadaArbre = sca.nextDouble();
 				
 				Arbre newArbre = new Arbre(nomArbre, preuArbre, alcadaArbre);
-//				floristeries.get(floristeriaBIndex).afegirArbre(newArbre);
 				floristeria.afegirArbre(newArbre);
 				
 				break;
 				
 			case 'c':
-//				boolean floristeriaCExistent = false;
-//				int floristeriaCIndex = -1;
-//				while (floristeriaCExistent == false) {
-//					System.out.println("+------------------------------------------+");
-//					System.out.println("|   Introduiu el nom de la floristeria     |");
-//					System.out.println("+------------------------------------------+");
-//					String nomFLoristeriaC = sca.next();
-//					for (int i=0; i<floristeries.size(); i++) {
-//						if (nomFLoristeriaC.equals(floristeries.get(i).getNom())) {
-//							floristeriaCIndex = i;
-//							floristeriaCExistent = true;
-//						}
-//						else {
-//							System.out.println("+------------------------------------------+");
-//							System.out.println("|   floristeria no trobada                 |");
-//						}
-//					}
-//				}
 				
 				System.out.println("+------------------------------------------+");
 				System.out.println("|   introduiu el nom de la flor:           |");
@@ -123,30 +82,11 @@ public class Main {
 				String colorFlor = sca.next();
 				
 				Flor newFlor = new Flor(nomFlor, preuFlor, colorFlor);
-//				floristeries.get(floristeriaCIndex).afegirFlor(newFlor);
 				floristeria.afegirFlor(newFlor);
 				
 				break;
 				
 			case 'd':
-//				boolean floristeriaDExistent = false;
-//				int floristeriaDIndex = -1;
-//				while (floristeriaDExistent == false) {
-//					System.out.println("+------------------------------------------+");
-//					System.out.println("|   Introduiu el nom de la floristeria     |");
-//					System.out.println("+------------------------------------------+");
-//					String nomFLoristeriaD = sca.next();
-//					for (int i=0; i<floristeries.size(); i++) {
-//						if (nomFLoristeriaD.equals(floristeries.get(i).getNom())) {
-//							floristeriaDIndex = i;
-//							floristeriaDExistent = true;
-//						}
-//						else {
-//							System.out.println("+------------------------------------------+");
-//							System.out.println("|   floristeria no trobada                 |");
-//						}
-//					}
-//				}
 				
 				System.out.println("+------------------------------------------+");
 				System.out.println("|   introduiu el nom de la decoració:      |");
@@ -186,7 +126,6 @@ public class Main {
 					}
 				}
 				Decoracio newDecoracio = new Decoracio(nomDecoracio, preuDecoracio, materialDecoracioBool);
-//				floristeries.get(floristeriaDIndex).afegirDecoracio(newDecoracio);
 				floristeria.afegirDecoracio(newDecoracio);
 				
 				break;
@@ -233,19 +172,10 @@ public class Main {
 		
 	}
 	
-//	private static void crearFloristeria (List<Floristeria> floristeries, String nom) {
-//		Floristeria newFloristeria = new Floristeria(nom);
-//		floristeries.add(newFloristeria);
-//	}
+
 	
 	
-	//TODO aquest mètode és una ximpleria així, jo el petaria. A més penso que cal una bona reorganització del codi quan tinguem una versió sense bugs
-	//TODO perquè aquest mètode en tot cas hauria d'anar dins de la classe floristeria. El codi és un laberint per saber què va amb què
-	public static Floristeria floristeria;
-	private static void crearFloristeria (String nom) { 
-		Floristeria newFloristeria = new Floristeria(nom);
-		floristeria = newFloristeria;
-	}
+
 	
 	private static void printejarFloristeria(Floristeria floristeria) {
 		System.out.println("Arbres: ");
