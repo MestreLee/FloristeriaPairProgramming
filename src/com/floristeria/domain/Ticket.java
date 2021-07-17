@@ -2,7 +2,6 @@ package com.floristeria.domain;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 
 public class Ticket {
 	
@@ -64,18 +63,24 @@ public class Ticket {
 		//TODO mètode per calcular el número d'espais al ticket
 		
 		
-		//TODO veure el mètode per cridar el registre del ticket que faci falta
-		
 		
 		//Busca el tiquet amb la seva id
-		int indexTicketToPrint = tickets.indexOf( this.ticketID == ticketID );
+		int indexTicketToPrint = -1;
+		for (int i=0; i<tickets.size(); i++) {
+			if ( tickets.get(i).ticketID == ticketID ) indexTicketToPrint = i; 
+		}
+		if (indexTicketToPrint == -1) {
+			System.out.println("ticketID no existent");
+			return;  //TODO comprovar que pari l'execució del mètode
+		}
 		Ticket ticketToPrint = tickets.get(indexTicketToPrint);	
+
 		
 		//capçalera
 		System.out.println("+------------------------------------------+");
 		System.out.println("|     Ticket de la floristeria:            |");
 //		System.out.println("|     "+ floristeria.getNom() +"          |"); //TODO no es pot accedir a la floristeria
-		System.out.println("|   Ticket #"+ ticketToPrint.ticketID +"          |"); //TODO no es pot accedir a la floristeria
+		System.out.println("|   Ticket #"+ ticketToPrint.ticketID +"          |");
 		System.out.println("+==========================================+");
 		
 		//productes
@@ -90,12 +95,11 @@ public class Ticket {
 		
 		//calcula el preu total
 		double preuTotal = 0;
-		productesTicket.forEach( producte -> preuTotal =+ producte.getPreu() );  //TODO 
+		for (Producte pr: productesTicket) {
+			preuTotal += pr.getPreu();
+		}
 		
-		
-		
-		
-
+		//prints the last line
 		System.out.println("|   Preu total= " + preuTotal + "                 |");
 		System.out.println("+------------------------------------------+");
 		
@@ -107,12 +111,58 @@ public class Ticket {
 	
 	
 	
-	//prints the last ticket  //TODO tickets.size()
+	//prints the last ticket
 	public void printLastTicket() {
-		
+		//TODO s'ha de fer a partir del codi anterior, fent que l'index sígui tickets.size()
 	}
-	
-	
-	
 
+
+
+
+
+
+	
+	
+	
+	
+	//getters & setters
+	public int getNumProductes() {
+		return numProductes;
+	}
+
+	public void setNumProductes(int numProductes) {
+		this.numProductes = numProductes;
+	}
+
+	public int getTicketID() {
+		return ticketID;
+	}
+
+	public void setTicketID(int ticketID) {
+		this.ticketID = ticketID;
+	}
+
+	public ArrayList<Producte> getProductesTicket() {
+		return productesTicket;
+	}
+
+	public void setProductesTicket(ArrayList<Producte> productesTicket) {
+		this.productesTicket = productesTicket;
+	}
+
+	public ArrayList<Ticket> getTickets() {
+		return tickets;
+	}
+
+	public void setTickets(ArrayList<Ticket> tickets) {
+		this.tickets = tickets;
+	}
+
+	public Scanner getSca() {
+		return sca;
+	}
+
+	public void setSca(Scanner sca) {
+		this.sca = sca;
+	}
 }
