@@ -109,7 +109,8 @@ public class ControladorFloristeria {
 	
 	public void printArbres(Floristeria floristeria){
 		List<Producte>toPrint = floristeria.getProductes().stream()
-				.filter( producte -> producte.getTipus().equals("arbre") && producte.getStock() >= 1 )
+				.filter( producte -> producte.getTipus().equals("arbre") )
+				.filter( producte -> producte.getStock() >= 1 )
 				.collect(Collectors.toList());
 		for(Producte pr: toPrint) {
 			System.out.println(pr.toString());
@@ -119,7 +120,8 @@ public class ControladorFloristeria {
 	
 	public void printFlors(Floristeria floristeria){
 		List<Producte>toPrint = floristeria.getProductes().stream()
-				.filter( producte -> producte.getTipus().equals("flor") && producte.getStock() >= 1 )
+				.filter( producte -> producte.getTipus().equals("flor") )
+				.filter( producte -> producte.getStock() >= 1 )
 				.collect(Collectors.toList());
 		for(Producte pr: toPrint) {
 			System.out.println(pr.toString());
@@ -129,7 +131,8 @@ public class ControladorFloristeria {
 	
 	public void printDecoracions(Floristeria floristeria){
 		List<Producte>toPrint = floristeria.getProductes().stream()
-				.filter( producte -> producte.getTipus().equals("decoracio") && producte.getStock() >= 1 )
+				.filter( producte -> producte.getTipus().equals("decoracio") )
+				.filter( producte -> producte.getStock() >= 1 )
 				.collect(Collectors.toList());
 		for(Producte pr: toPrint) {
 			System.out.println(pr.toString());
