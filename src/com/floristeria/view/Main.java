@@ -7,7 +7,11 @@ import com.floristeria.domain.Decoracio;
 import com.floristeria.domain.Flor;
 import com.floristeria.domain.Floristeria;
 
+import com.floristeria.application.ControladorFloristeria;
+
 public class Main {
+	
+	public static ControladorFloristeria controller = new ControladorFloristeria();
 	
 	public static void main(String[] args) throws Exception {
 		
@@ -60,7 +64,7 @@ public class Main {
 				double alcadaArbre = sca.nextDouble();
 				
 				Arbre newArbre = new Arbre(nomArbre, preuArbre, alcadaArbre);
-				floristeria.afegirArbre(newArbre);
+				controller.afegirArbre(floristeria, newArbre);
 				
 				break;
 				
@@ -82,7 +86,7 @@ public class Main {
 				String colorFlor = sca.next();
 				
 				Flor newFlor = new Flor(nomFlor, preuFlor, colorFlor);
-				floristeria.afegirFlor(newFlor);
+				controller.afegirFlor(floristeria, newFlor);
 				
 				break;
 				
@@ -126,7 +130,7 @@ public class Main {
 					}
 				}
 				Decoracio newDecoracio = new Decoracio(nomDecoracio, preuDecoracio, materialDecoracioBool);
-				floristeria.afegirDecoracio(newDecoracio);
+				controller.afegirDecoracio(floristeria, newDecoracio);
 				
 				break;
 				
@@ -179,11 +183,11 @@ public class Main {
 	
 	private static void printejarFloristeria(Floristeria floristeria) {
 		System.out.println("Arbres: ");
-		floristeria.printArbres();
+		controller.printArbres(floristeria);
 		System.out.println("Flors: ");
-		floristeria.printFlors();
+		controller.printFlors(floristeria);
 		System.out.println("Decoracions: ");
-		floristeria.printDecoracions();
+		controller.printDecoracions(floristeria);
 		
 	}
 
