@@ -5,15 +5,12 @@ import java.util.Scanner;
 
 public class Ticket {
 	
-	Ticket(int numProductes){
-		this.numProductes = numProductes;
+	Ticket(){
 		ticketID = nextId;
         nextId++;
 	}
 
 
-	private int numProductes;
-//	private String nomFloristeria;
 	private int ticketID;
 	private static int nextId = 1;
 	
@@ -29,25 +26,19 @@ public class Ticket {
 	
 	
 	//creates a new ticket after the purchase
-	public void createTicket(int numProductes){
-		Ticket newTicket = new Ticket(numProductes);
+	public void createTicket(ArrayList<Integer> productesComprats){
 		
+		Ticket newTicket = new Ticket();
 		
 		//saves all the ticket products
 		newTicket.productesTicket = new ArrayList<Producte>();
 		
-		
 		//adds the products to the product ArrayList
-		for (int i=0; i<numProductes; i++) {
-			//TODO això haurà d'anar al menú, però temporalment queda dins del mètode. també s'ha d'esborrar el scanner
-			System.out.println("Introduiu la ID del producte #" + (i+1) + " que voleu adquirir");
-			int producteNouID = sca.nextInt();
-			
+		for (int id: productesComprats) {
 			Floristeria.productes.forEach( producte -> {
-				if (producte.getId() == producteNouID) newTicket.productesTicket.add(producte);
+				if (producte.getId() == id) newTicket.productesTicket.add(producte);
 			});
 		}
-		
 		
 		//save the products to the ticket array
 		tickets.add(newTicket);
@@ -55,14 +46,8 @@ public class Ticket {
 	
 	
 	
-	
-	
 	//prints the ticket with the ID indicated 
 	public void printTicket(int ticketID) {
-		
-		//TODO mètode per calcular el número d'espais al ticket
-		
-		
 		
 		//Busca el tiquet amb la seva id
 		int indexTicketToPrint = -1;
@@ -73,25 +58,22 @@ public class Ticket {
 			System.out.println("ticketID no existent");
 			return;  //TODO comprovar que pari l'execució del mètode
 		}
-		Ticket ticketToPrint = tickets.get(indexTicketToPrint);	
-
+		Ticket ticketToPrint = tickets.get(indexTicketToPrint);
 		
 		//capçalera
-		System.out.println("+------------------------------------------+");
-		System.out.println("|     Ticket de la floristeria:            |");
-//		System.out.println("|     "+ floristeria.getNom() +"          |"); //TODO no es pot accedir a la floristeria
-		System.out.println("|   Ticket #"+ ticketToPrint.ticketID +"          |");
-		System.out.println("+==========================================+");
+		System.out.println("------------------------------------------");
+		System.out.println("     Ticket de la floristeria             ");
+		System.out.println("         ID #"+ ticketToPrint.ticketID);
+		System.out.println("==========================================");
 		
 		//productes
-		for (int i=0; i<ticketToPrint.numProductes; i++) {
-			System.out.println("|  " + ticketToPrint.productesTicket.get(i).getNom() 
-					+ "  " + ticketToPrint.productesTicket.get(i).getPreu() + "  |");
+		for (Producte pr: ticketToPrint.productesTicket) {
+//			System.out.println("  " + pr.getNom() + "  " + pr.getPreu()); //TODO mirar si el Bernat ho veu clar així
+			System.out.println("  " + pr.getNom());
+			System.out.println("                         " + pr.getPreu());
+			System.out.println();
 		}
-		System.out.println("+==========================================+");	
-				
-				
-
+		System.out.println("==========================================");		
 		
 		//calcula el preu total
 		double preuTotal = 0;
@@ -100,40 +82,48 @@ public class Ticket {
 		}
 		
 		//prints the last line
-		System.out.println("|   Preu total= " + preuTotal + "                 |");
-		System.out.println("+------------------------------------------+");
-		
-		
+		System.out.println("         Preu total= " + preuTotal);
+		System.out.println("------------------------------------------");
 	}
-	
-	
-	
 	
 	
 	
 	//prints the last ticket
 	public void printLastTicket() {
-		//TODO s'ha de fer a partir del codi anterior, fent que l'index sígui tickets.size()
+		Ticket ticketToPrint = tickets.get(tickets.size());	
+		
+		//capçalera
+		System.out.println("------------------------------------------");
+		System.out.println("     Ticket de la floristeria             ");
+		System.out.println("         ID #"+ ticketToPrint.ticketID);
+		System.out.println("==========================================");
+		
+		//productes
+		for (Producte pr: ticketToPrint.productesTicket) {
+//			System.out.println("  " + pr.getNom() + "  " + pr.getPreu()); //TODO mirar si el Bernat ho veu clar així
+			System.out.println("  " + pr.getNom());
+			System.out.println("                         " + pr.getPreu());
+			System.out.println();
+		}
+		System.out.println("==========================================");		
+		
+		//calcula el preu total
+		double preuTotal = 0;
+		for (Producte pr: productesTicket) {
+			preuTotal += pr.getPreu();
+		}
+		
+		//prints the last line
+		System.out.println("         Preu total= " + preuTotal);
+		System.out.println("------------------------------------------");
 	}
-
-
-
-
-
-
+		
+	
 	
 	
 	
 	
 	//getters & setters
-	public int getNumProductes() {
-		return numProductes;
-	}
-
-	public void setNumProductes(int numProductes) {
-		this.numProductes = numProductes;
-	}
-
 	public int getTicketID() {
 		return ticketID;
 	}
