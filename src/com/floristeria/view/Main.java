@@ -182,12 +182,10 @@ public class Main {
 				while (segueixIterant) {
 					System.out.println("Afegeix una id de producte:");
 					idprod = sca.nextInt();
-					//Llegim la new-line que causa problemes amb l'scanner si no es fa:
-					sca.next();
 					if (controller.comprovarStock(floristeria, idprod)) llistaProductes.add(idprod);
 					else System.out.println("No queda stock d'aquest producte!");
 					System.out.println("Vols afegir més productes? si, no");
-					if (sca.next() == "no") segueixIterant = false;  
+					if (sca.next().equals("no")) segueixIterant = false;  
 				}
 				
 				//Pas 2: retirem els productes que coincideixin amb les IDs de l'array

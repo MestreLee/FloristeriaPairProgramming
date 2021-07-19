@@ -90,7 +90,7 @@ public class Ticket {
 	
 	//prints the last ticket
 	public void printLastTicket() {
-		Ticket ticketToPrint = tickets.get(tickets.size());	
+		Ticket ticketToPrint = tickets.get(tickets.size() - 1);	
 		
 		//capçalera
 		System.out.println("------------------------------------------");
