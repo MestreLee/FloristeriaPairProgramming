@@ -1,5 +1,6 @@
 package com.floristeria.application;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -92,17 +93,30 @@ public class ControladorFloristeria {
 		}
 	}
 	
-	public void retirarProducte(Floristeria floristeria, Producte producte) {
+	public boolean comprovarStock(Floristeria floristeria, int id) {
+		boolean teStock = false;
 		for(Producte pr: floristeria.getProductes()) {
-			if (pr.getId() == producte.getId()) {
+			if (pr.getId() == id) {
 				if(pr.getStock() == 0) {
-					System.out.println("No queda stock d'aquest producte!");
 					break;
-				}else {
+			}else {
+				teStock = true;
+			}
+			}
+		}
+		
+		return teStock;
+				
+	}
+	
+	public void retirarProductes (Floristeria floristeria, ArrayList<Integer> llistaIds) {
+		for (int id:llistaIds) {
+			for (Producte pr: floristeria.getProductes()) {
+				if(pr.getId() == id) {
 					pr.decrStock();
 					floristeria.decrValorTotalStock(pr.getPreu());
+					break;
 				}
-					
 			}
 		}
 	}

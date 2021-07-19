@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Ticket {
 	
-	Ticket(){
+	public Ticket(){
 		ticketID = nextId;
         nextId++;
 	}

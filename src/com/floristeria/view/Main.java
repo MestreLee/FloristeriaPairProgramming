@@ -1,12 +1,13 @@
 package com.floristeria.view;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import com.floristeria.domain.Arbre;
 import com.floristeria.domain.Decoracio;
 import com.floristeria.domain.Flor;
 import com.floristeria.domain.Floristeria;
-
+import com.floristeria.domain.Ticket;
 import com.floristeria.application.ControladorFloristeria;
 
 public class Main {
@@ -30,6 +31,10 @@ public class Main {
 			System.out.println("|   b: afegir arbre                        |");
 			System.out.println("|   c: afegir flor                         |");
 			System.out.println("|   d: afegir decoració                    |");
+			System.out.println("|   e: veure stock i valor stock           |");
+			System.out.println("|   f: veure tots els productes            |");
+			System.out.println("+------------------------------------------+");
+			System.out.println("|   g: gestionar una compra                |");
 			System.out.println("+------------------------------------------+");
 			System.out.println("|   z: tancar programa                     |");
 			System.out.println("+------------------------------------------+");
@@ -64,7 +69,12 @@ public class Main {
 				double alcadaArbre = sca.nextDouble();
 				
 				Arbre newArbre = new Arbre(nomArbre, preuArbre, alcadaArbre);
-				controller.afegirArbre(floristeria, newArbre);
+				try {
+					controller.afegirArbre(floristeria, newArbre);
+				}catch (NullPointerException e) {
+					System.out.println("Primer has d'instanciar una floristeria!");
+				}
+				
 				
 				break;
 				
@@ -86,7 +96,12 @@ public class Main {
 				String colorFlor = sca.next();
 				
 				Flor newFlor = new Flor(nomFlor, preuFlor, colorFlor);
-				controller.afegirFlor(floristeria, newFlor);
+				try {
+					controller.afegirFlor(floristeria, newFlor);
+				}catch (NullPointerException e) {
+					System.out.println("Primer has d'instanciar una floristeria!");
+				}
+				
 				
 				break;
 				
@@ -130,7 +145,63 @@ public class Main {
 					}
 				}
 				Decoracio newDecoracio = new Decoracio(nomDecoracio, preuDecoracio, materialDecoracioBool);
-				controller.afegirDecoracio(floristeria, newDecoracio);
+				try {
+					controller.afegirDecoracio(floristeria, newDecoracio);
+				}catch (NullPointerException e) {
+					System.out.println("Primer has d'instanciar una floristeria!");
+				}
+						
+				break;
+			
+			case 'e':
+				try {
+					controller.printStock(floristeria);
+					controller.printValorTotal(floristeria);
+				}catch (NullPointerException e) {
+					System.out.println("No hi ha cap floristeria creada!");
+				}
+				
+				break;
+				
+			case 'f':
+				try {
+					printejarFloristeria(floristeria);
+				} catch (NullPointerException e) {
+					System.out.println("No hi ha cap floristeria creada!");
+				}
+				
+				break;
+				
+			case 'g': 
+				
+				//Pas 1: omplim un array d'ints amb les IDs dels productes que formaran part del ticket de compra
+				
+				ArrayList <Integer> llistaProductes = new ArrayList<Integer>();
+				boolean segueixIterant = true;
+				int idprod = 0;
+				while (segueixIterant) {
+					System.out.println("Afegeix una id de producte:");
+					idprod = sca.nextInt();
+					//Llegim la new-line que causa problemes amb l'scanner si no es fa:
+					sca.next();
+					if (controller.comprovarStock(floristeria, idprod)) llistaProductes.add(idprod);
+					else System.out.println("No queda stock d'aquest producte!");
+					System.out.println("Vols afegir més productes? si, no");
+					if (sca.next() == "no") segueixIterant = false;  
+				}
+				
+				//Pas 2: retirem els productes que coincideixin amb les IDs de l'array
+				
+				controller.retirarProductes(floristeria, llistaProductes);
+				
+				//Pas 3: creem el ticket de compra
+				
+				Ticket ticket = new Ticket();
+				ticket.createTicket(llistaProductes);
+				
+				//Pas 4: printegem l'últim ticket creat
+				
+				ticket.printLastTicket();
 				
 				break;
 				
@@ -148,30 +219,26 @@ public class Main {
 		
 		//DEBUG LINES
 //		//crearFloristeria 
-//		crearFloristeria(floristeries, "Floristeria 1");
+//		Floristeria floristeria = new Floristeria ("floristeria");
 //		
 //		//afegirArbre 
 //		Arbre llimoner = new Arbre("llimoner", 20.5, 3.5);
 //		Arbre avet = new Arbre("avet", 20.5, 3.5);
 //		Arbre pi = new Arbre("pi", 20.5, 3.5);
 //		
-//		floristeries.get(0).afegirArbre(llimoner);
-//		floristeries.get(0).afegirArbre(avet);
-//		floristeries.get(0).afegirArbre(pi);
+//		controller.afegirArbre(floristeria, llimoner);
+//		controller.afegirArbre(floristeria, avet);
+//		controller.afegirArbre(floristeria, pi);
 //		
 //		//afegirFlor 
 //		Flor flor = new Flor("rosa", 5, "vermell");
 //		
-//		floristeries.get(0).afegirFlor(flor);
+//		controller.afegirFlor(floristeria, flor);
 //		
 //		//afegirDecoracio 
 //		Decoracio decoracio = new Decoracio("Decoracio de fusta", 6.5, true);
 //		
-//		floristeries.get(0).afegirDecoracio(decoracio);
-//		
-//		//stock: imprimeix per pantalla tots els arbres, flors i decoració que té la floristeria.
-//		
-//		printejarFloristeria(floristeries.get(0));
+//		controller.afegirDecoracio(floristeria, decoracio);
 		
 		
 	}
