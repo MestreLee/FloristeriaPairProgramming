@@ -23,11 +23,15 @@ public class ControladorFloristeria {
 		boolean trobat = false;  
 		for (Producte pr:floristeria.getProductes()) {
 			if((pr instanceof Arbre)) {	
-				if(pr.equals(arbre)) {
-					pr.incStock();
-					floristeria.incrValorTotalStock(pr.getPreu());
-					trobat = true;
-					break;
+				if(pr.getNom().equals(arbre.getNom())) {
+					if(pr.getPreu() == arbre.getPreu()) {
+						if(((Arbre) pr).getAlcada() == arbre.getAlcada()) {
+							pr.incStock();
+							floristeria.incrValorTotalStock(pr.getPreu());
+							trobat = true;
+							break;
+						}
+					}
 				}
 			}
 		}
@@ -49,11 +53,15 @@ public class ControladorFloristeria {
 		boolean trobat = false;  
 		for (Producte pr:floristeria.getProductes()) {
 			if((pr instanceof Flor)) {	
-				if(pr.equals(flor)) {
-					pr.incStock();
-					floristeria.incrValorTotalStock(pr.getPreu());
-					trobat = true;
-					break;
+				if(pr.getNom().equals(flor.getNom())) {
+					if(pr.getPreu() == flor.getPreu()) {
+						if(((Flor) pr).getColor().equals(flor.getColor())) {
+							pr.incStock();
+							floristeria.incrValorTotalStock(pr.getPreu());
+							trobat = true;
+							break;
+						}
+					}
 				}
 			}
 		}
@@ -75,11 +83,15 @@ public class ControladorFloristeria {
 		boolean trobat = false;  
 		for (Producte pr:floristeria.getProductes()) {
 			if((pr instanceof Decoracio)) {	
-				if(pr.equals(decoracio)) {
-					pr.incStock();
-					floristeria.incrValorTotalStock(pr.getPreu());
-					trobat = true;
-					break;
+				if(pr.getNom().equals(decoracio.getNom())) {
+					if(pr.getPreu() == decoracio.getPreu()) {
+						if(((Decoracio) pr).getMaterial().equals(decoracio.getMaterial())) {
+							pr.incStock();
+							floristeria.incrValorTotalStock(pr.getPreu());
+							trobat = true;
+							break;
+						}
+					}
 				}
 			}
 		}
@@ -113,9 +125,14 @@ public class ControladorFloristeria {
 		for (int id:llistaIds) {
 			for (Producte pr: floristeria.getProductes()) {
 				if(pr.getId() == id) {
-					pr.decrStock();
-					floristeria.decrValorTotalStock(pr.getPreu());
-					break;
+					if(pr.getStock() == 0) {
+						break;
+					}else {
+						pr.decrStock();
+						floristeria.decrValorTotalStock(pr.getPreu());
+						break;
+					}
+
 				}
 			}
 		}

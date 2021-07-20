@@ -8,6 +8,10 @@ public class Flor extends Producte {
 		super(nom, preu);
 		this.color = color;
 	}
+	
+	public String getColor() {
+		return color;
+	}
 
 
 	@Override

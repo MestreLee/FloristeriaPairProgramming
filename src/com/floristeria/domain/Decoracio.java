@@ -8,6 +8,13 @@ public class Decoracio extends Producte {
 		super(nom, preu);
 		this.material = material;
 	}
+	
+	public String getMaterial(){
+		String mater = this.material 
+  				? "Fusta" 
+  				: "Plastic";
+		return mater;
+	}
 
 
 	@Override

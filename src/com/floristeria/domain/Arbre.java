@@ -8,6 +8,10 @@ public class Arbre extends Producte {
 		super(nom, preu);
 		this.alcada = alcada;
 	}
+	
+	public double getAlcada() {
+		return alcada;
+	}
 		
 
 	@Override
