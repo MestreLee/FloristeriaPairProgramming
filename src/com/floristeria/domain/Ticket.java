@@ -1,7 +1,6 @@
 package com.floristeria.domain;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Ticket {
 	
@@ -18,11 +17,7 @@ public class Ticket {
 	
 	
 	//saves all the tickets
-	private ArrayList<Ticket> tickets = new ArrayList<Ticket>();
-	
-	
-	Scanner sca = new Scanner(System.in);
-
+	private static ArrayList<Ticket> tickets = new ArrayList<Ticket>();
 	
 	
 	//creates a new ticket after the purchase
@@ -47,7 +42,7 @@ public class Ticket {
 	
 	
 	//prints the ticket with the ID indicated 
-	public void printTicket(int ticketID) {
+	public static void printTicket(int ticketID) {
 		
 		//Busca el tiquet amb la seva id
 		int indexTicketToPrint = -1;
@@ -56,7 +51,7 @@ public class Ticket {
 		}
 		if (indexTicketToPrint == -1) {
 			System.out.println("ticketID no existent");
-			return;  //TODO comprovar que pari l'execució del mètode
+			return;
 		}
 		Ticket ticketToPrint = tickets.get(indexTicketToPrint);
 		
@@ -68,16 +63,15 @@ public class Ticket {
 		
 		//productes
 		for (Producte pr: ticketToPrint.productesTicket) {
-//			System.out.println("  " + pr.getNom() + "  " + pr.getPreu()); //TODO mirar si el Bernat ho veu clar així
 			System.out.println("  " + pr.getNom());
 			System.out.println("                         " + pr.getPreu());
-			System.out.println();
+			System.out.println("------------------------------------------");
 		}
 		System.out.println("==========================================");		
 		
 		//calcula el preu total
 		double preuTotal = 0;
-		for (Producte pr: productesTicket) {
+		for (Producte pr: ticketToPrint.productesTicket) {
 			preuTotal += pr.getPreu();
 		}
 		
@@ -100,59 +94,20 @@ public class Ticket {
 		
 		//productes
 		for (Producte pr: ticketToPrint.productesTicket) {
-//			System.out.println("  " + pr.getNom() + "  " + pr.getPreu()); //TODO mirar si el Bernat ho veu clar així
 			System.out.println("  " + pr.getNom());
 			System.out.println("                         " + pr.getPreu());
-			System.out.println();
+			System.out.println("------------------------------------------");
 		}
 		System.out.println("==========================================");		
 		
 		//calcula el preu total
 		double preuTotal = 0;
-		for (Producte pr: productesTicket) {
+		for (Producte pr: ticketToPrint.productesTicket) {
 			preuTotal += pr.getPreu();
 		}
 		
 		//prints the last line
 		System.out.println("         Preu total= " + preuTotal);
 		System.out.println("------------------------------------------");
-	}
-		
-	
-	
-	
-	
-	
-	//getters & setters
-	public int getTicketID() {
-		return ticketID;
-	}
-
-	public void setTicketID(int ticketID) {
-		this.ticketID = ticketID;
-	}
-
-	public ArrayList<Producte> getProductesTicket() {
-		return productesTicket;
-	}
-
-	public void setProductesTicket(ArrayList<Producte> productesTicket) {
-		this.productesTicket = productesTicket;
-	}
-
-	public ArrayList<Ticket> getTickets() {
-		return tickets;
-	}
-
-	public void setTickets(ArrayList<Ticket> tickets) {
-		this.tickets = tickets;
-	}
-
-	public Scanner getSca() {
-		return sca;
-	}
-
-	public void setSca(Scanner sca) {
-		this.sca = sca;
 	}
 }

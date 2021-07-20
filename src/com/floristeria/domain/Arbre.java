@@ -6,19 +6,9 @@ public class Arbre extends Producte {
 
 	public Arbre(String nom, double preu, double alcada) {
 		super(nom, preu);
-		this.setAlcada(alcada);
-	}
-		
-
-	//getters & setters
-	public double getAlcada() {
-		return alcada;
-	}
-
-	public void setAlcada(double alcada) {
 		this.alcada = alcada;
 	}
-
+		
 
 	@Override
 	public String toString() {

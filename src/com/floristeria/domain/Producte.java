@@ -20,24 +20,28 @@ public abstract class Producte {
 	private int stock;
 	
 	
+	//methods for increase and decrease the stock
+	public void incStock() {
+		stock++;
+	}
+	public void decrStock() {
+		stock--;
+	}
+	
 	
 	//getters & setters
 	public String getNom() {
 		return nom;
 	}
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
+	
 	public double getPreu() {
 		return preu;
 	}
-	public void setPreu(double preu) {
-		this.preu = preu;
-	}
-	
+
 	public String getTipus() {
 		return tipus;
 	}
+	
 	public void setTipus(String tipus) {
 		this.tipus = tipus;
 	}
@@ -49,24 +53,8 @@ public abstract class Producte {
 	public int getStock() {
 		return stock;
 	}
+	
 	public void setStock(int stock) {
 		this.stock = stock;
 	}
-	public void incStock() {
-		stock++;
-	}
-	
-	public void decrStock() {
-		stock--;
-	}
-	
-	
-	@Override
-	public String toString() {
-		return "Producte [nom=" + nom + ", preu=" + preu + "]";
-	}
-	
-
-	
-	
 }

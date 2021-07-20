@@ -121,7 +121,7 @@ public class ControladorFloristeria {
 		}
 	}
 	
-	public void printArbres(Floristeria floristeria){
+	public static void printArbres(Floristeria floristeria){
 		List<Producte>toPrint = floristeria.getProductes().stream()
 				.filter( producte -> producte.getTipus().equals("arbre") )
 				.filter( producte -> producte.getStock() >= 1 )
@@ -129,10 +129,9 @@ public class ControladorFloristeria {
 		for(Producte pr: toPrint) {
 			System.out.println(pr.toString());
 		}
-		//System.out.println(toPrint.toString());
 	}
 	
-	public void printFlors(Floristeria floristeria){
+	public static void printFlors(Floristeria floristeria){
 		List<Producte>toPrint = floristeria.getProductes().stream()
 				.filter( producte -> producte.getTipus().equals("flor") )
 				.filter( producte -> producte.getStock() >= 1 )
@@ -140,10 +139,9 @@ public class ControladorFloristeria {
 		for(Producte pr: toPrint) {
 			System.out.println(pr.toString());
 		}
-		//System.out.println(toPrint.toString());
 	}
 	
-	public void printDecoracions(Floristeria floristeria){
+	public static void printDecoracions(Floristeria floristeria){
 		List<Producte>toPrint = floristeria.getProductes().stream()
 				.filter( producte -> producte.getTipus().equals("decoracio") )
 				.filter( producte -> producte.getStock() >= 1 )
@@ -151,7 +149,6 @@ public class ControladorFloristeria {
 		for(Producte pr: toPrint) {
 			System.out.println(pr.toString());
 		}
-		//System.out.println(toPrint.toString());
 	}
 	
 	public void printStock(Floristeria floristeria) {
@@ -163,6 +160,16 @@ public class ControladorFloristeria {
 	public void printValorTotal(Floristeria floristeria) {
 		
 		System.out.println("El valor total de l'stock de la floristeria és de: " + floristeria.getValorTotalStock() + " €.");
+	}
+	
+	public static void printejarFloristeria(Floristeria floristeria) {
+		System.out.println("Arbres: ");
+		printArbres(floristeria);
+		System.out.println("Flors: ");
+		printFlors(floristeria);
+		System.out.println("Decoracions: ");
+		printDecoracions(floristeria);
+		
 	}
 
 }

@@ -6,7 +6,7 @@ import java.util.List;
 import com.floristeria.domain.Floristeria;
 
 
-public class Magatzem {
+public class Magatzem { //TODO esborrar classe
 	
 	private static List<Floristeria> floristeries=new ArrayList<>();
 	//això és una modificació 4
